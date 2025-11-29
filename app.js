@@ -18,9 +18,14 @@ while(true){
       todo.push(task);
       console.log("task added");
     }else if(req == "delete"){
-       let idx = prompt("Please enter the task index:")
-       todo.splice(idx, 1);
-       console.log("task deleted");
+       let idx = prompt("Please enter the task index:");
+       let index = Number(idx);
+       if(Number.isNaN(index) || index < 0 || index >= todo.length){
+        console.log("Invalid index. Use 'list' to see indexes");
+       }else{
+        let removed = todo.splice(index, 1);
+        console.log("Removed:", removed[0]);
+       }
     }else{
        console.log("Wrong request");
     }
